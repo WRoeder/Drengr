@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private float speed;
+    [SerializeField] private float maximumSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float jumpButtonGracePeriod;
+    [SerializeField] private Transform cameraTransform;
 
     private Animator animator;
     private CharacterController characterController;
@@ -32,7 +33,16 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
+
+        if (Input.GetKey(KeyCode.LeftShift) == true || Input.GetKey(KeyCode.RightShift) == true)
+        {
+            inputMagnitude /= 2;
+        }
+        animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime);
+
+        float speed = inputMagnitude * maximumSpeed;
+        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         movementDirection.Normalize();
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
@@ -65,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             characterController.stepOffset = 0;
         }
 
-        Vector3 velocity = movementDirection * magnitude;
+        Vector3 velocity = movementDirection * speed;
         velocity.y = ySpeed;
 
         characterController.Move(velocity * Time.deltaTime);
@@ -73,15 +83,21 @@ public class PlayerMovement : MonoBehaviour
         if (movementDirection != Vector3.zero)
         {
 
-            animator.SetBool("IsMoving", true);
-
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         else
         {
-            animator.SetBool("IsMoving", false);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
