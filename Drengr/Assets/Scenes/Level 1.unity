@@ -1020,12 +1020,20 @@ PrefabInstance:
       value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+      propertyPath: jumpSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+      propertyPath: fallDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 2038620235}
     - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
       propertyPath: jumpHorizontalSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2991796561222458238, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
       propertyPath: m_Avatar

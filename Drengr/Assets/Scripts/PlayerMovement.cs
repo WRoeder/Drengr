@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpButtonGracePeriod;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float jumpHorizontalSpeed;
+    [SerializeField] private float fallDistance;
 
     private Animator animator;
     private CharacterController characterController;
@@ -19,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
     private float? jumpButtonPressedTime;
     private bool isJumping;
     private bool isGrounded;
+
+    private bool CheckIfFalling()
+    {
+        Ray ray = new Ray(transform.position, -transform.up);
+        return (!Physics.Raycast(ray, out RaycastHit hit, fallDistance) && (ySpeed <= 0));
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsGrounded", false);
             isGrounded = false;
 
-            if ((isJumping && ySpeed < 0) || ySpeed < -2)
+            if ((isJumping && ySpeed < 0) || CheckIfFalling())
             {
                 animator.SetBool("IsFalling", true);
             }
