@@ -1108,17 +1108,21 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1992274174}
+    - target: {fileID: 7406459316656201641, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
+      propertyPath: m_XAxis.m_InvertInput
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7406459316656201642, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_Name
       value: CM FreeLook1
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317065664460, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000004278879
+      value: 0.000000004278879
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317065664460, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.4149773e-10
+      value: -4.4149773e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317080650340, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.y
