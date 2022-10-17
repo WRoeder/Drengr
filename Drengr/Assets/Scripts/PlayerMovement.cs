@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float gravityMultiplier;
     [SerializeField] private float jumpButtonGracePeriod;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float jumpHorizontalSpeed;
@@ -53,7 +54,14 @@ public class PlayerMovement : MonoBehaviour
         movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         movementDirection.Normalize();
 
-        ySpeed += Physics.gravity.y * Time.deltaTime;
+        float gravity = Physics.gravity.y * gravityMultiplier;
+
+        if (isJumping && ySpeed > 0 && Input.GetButton("Jump") == false)
+        {
+            gravity *= 2;
+        }
+
+        ySpeed += gravity * Time.deltaTime;
 
         if (characterController.isGrounded)
         {
@@ -78,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
             {
-                ySpeed = jumpSpeed;
+                ySpeed = Mathf.Sqrt(jumpHeight * -3 * gravity);
                 animator.SetBool("IsJumping", true);
                 isJumping = true;
                 jumpButtonPressedTime = null;

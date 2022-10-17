@@ -907,6 +907,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07f24e35f07ce74ba43afa35d48adf7, type: 3}
+--- !u!1 &2104305087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7406459316656201642, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
+  m_PrefabInstance: {fileID: 7406459316951568267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2104305088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104305087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2126685c6306a419f2bae0a9c7ddd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1897940219595050592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1024,6 +1041,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+      propertyPath: jumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
       propertyPath: fallDistance
       value: 1
       objectReference: {fileID: 0}
@@ -1031,6 +1052,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 2038620235}
+    - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+      propertyPath: gravityMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2991796561222458237, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
       propertyPath: jumpHorizontalSpeed
       value: 5
@@ -1112,17 +1137,29 @@ PrefabInstance:
       propertyPath: m_XAxis.m_InvertInput
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7406459316656201641, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
+      propertyPath: m_RecenterToTargetHeading.m_enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406459316656201641, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
+      propertyPath: m_RecenterToTargetHeading.m_WaitTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406459316656201641, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
+      propertyPath: m_RecenterToTargetHeading.m_RecenteringTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7406459316656201642, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_Name
       value: CM FreeLook1
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317065664460, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004278879
+      value: -0.000000004278879
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317065664460, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.4149773e-10
+      value: 4.4149773e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317080650340, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.y
