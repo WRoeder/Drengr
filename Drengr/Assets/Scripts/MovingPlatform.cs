@@ -13,6 +13,11 @@ public class MovingPlatform : MonoBehaviour
     private float _timeToWaypoint;
     private float _elapsedTime;
 
+    private void OnDrawGizmosSelected()
+    {
+        _waypointPath.DrawWaypointGizmos();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
