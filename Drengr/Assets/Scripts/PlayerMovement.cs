@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private float? jumpButtonPressedTime;
     private bool isJumping;
     private bool isGrounded;
+    private bool isSliding;
+    private Vector3 slopeSlideVelocity; 
 
     private bool CheckIfFalling()
     {
@@ -63,6 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
         ySpeed += gravity * Time.deltaTime;
 
+        SetSlopeSlideVelocity();
+
+        if (slopeSlideVelocity == Vector3.zero)
+        {
+            isSliding = false;
+        }
+
         if (characterController.isGrounded)
         {
             lastGroundedTime = Time.time;
@@ -75,16 +84,25 @@ public class PlayerMovement : MonoBehaviour
 
         if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
         {
+            if (slopeSlideVelocity != Vector3.zero)
+            {
+                isSliding = true;
+            }
 
             characterController.stepOffset = originalStepOffset;
-            ySpeed = -0.5f;
+
+            if (isSliding == false)
+            {
+                ySpeed = -0.5f;
+            }
+            
             animator.SetBool("IsGrounded", true);
             isGrounded = true;
             animator.SetBool("IsJumping", false);
             isJumping = false;
             animator.SetBool("IsFalling", false);
 
-            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
+            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod && isSliding == false)
             {
                 ySpeed = Mathf.Sqrt(jumpHeight * -3 * gravity);
                 animator.SetBool("IsJumping", true);
@@ -119,19 +137,53 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
 
-        if (isGrounded == false)
+        if (isGrounded == false && isSliding == false)
         {
             Vector3 velocity = movementDirection * inputMagnitude * jumpHorizontalSpeed;
             velocity.y = ySpeed;
 
             characterController.Move(velocity * Time.deltaTime);
         }
+
+        if (isSliding)
+        {
+            Vector3 velocity = slopeSlideVelocity;
+            velocity.y = ySpeed;
+
+            characterController.Move(velocity * Time.deltaTime);
+        }
+    }
+
+    private void SetSlopeSlideVelocity()
+    {
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hitInfo, 5))
+        {
+            float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
+
+            if (angle >= characterController.slopeLimit)
+            {
+                slopeSlideVelocity = Vector3.ProjectOnPlane(new Vector3(0, ySpeed, 0), hitInfo.normal);
+                return;
+            }
+        }
+
+        if (isSliding)
+        {
+            slopeSlideVelocity -= slopeSlideVelocity * Time.deltaTime * 3;
+
+            if (slopeSlideVelocity.magnitude > 1)
+            {
+                return;
+            }
+        }
+
+        slopeSlideVelocity = Vector3.zero;
     }
 
     private void OnAnimatorMove()
     {
 
-        if (isGrounded)
+        if (isGrounded && isSliding == false)
         {
             Vector3 velocity = animator.deltaPosition;
             velocity.y = ySpeed * Time.deltaTime;
