@@ -196,17 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &222722480 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 222722474, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
-  m_PrefabInstance: {fileID: 1086943386306068085}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d708decd48331274db2d95f748950b57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &336082597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,6 +1950,17 @@ PrefabInstance:
       objectReference: {fileID: 1572787336}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+--- !u!114 &1086943386306068086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 222722474, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+  m_PrefabInstance: {fileID: 1086943386306068085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708decd48331274db2d95f748950b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1897940219595050592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2089,11 +2089,19 @@ PrefabInstance:
     - target: {fileID: 304578061, guid: 206d36cd24825bc42b3c253963e67987, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 222722480}
+      objectReference: {fileID: 222722474, guid: 45aa1363b497dc541bc27853e71cceba, type: 3}
+    - target: {fileID: 304578061, guid: 206d36cd24825bc42b3c253963e67987, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1577337796, guid: 206d36cd24825bc42b3c253963e67987, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 222722480}
+      objectReference: {fileID: 1086943386306068086}
+    - target: {fileID: 1577337796, guid: 206d36cd24825bc42b3c253963e67987, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2931671401526546733, guid: 206d36cd24825bc42b3c253963e67987, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2521,11 +2529,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317065664460, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000021484985
+      value: 0.0000000021484987
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317065664460, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 9.94205e-11
+      value: -9.9420513e-11
       objectReference: {fileID: 0}
     - target: {fileID: 7406459317080650340, guid: d6956b6ec38a84446b1a7dc473562430, type: 3}
       propertyPath: m_LocalRotation.w
