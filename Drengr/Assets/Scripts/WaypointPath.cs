@@ -23,13 +23,6 @@ public class WaypointPath : MonoBehaviour
         return nextWaypointIndex;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (IsWaypointSelected())
-        {
-            DrawWaypointGizmos();
-        }
-    }
 
     public void DrawWaypointGizmos()
     {
@@ -48,21 +41,5 @@ public class WaypointPath : MonoBehaviour
         }
     }
 
-    private bool IsWaypointSelected()
-    {
-        if (Selection.transforms.Contains(transform))
-        {
-            return true;
-        }
-
-        foreach (Transform child in transform)
-        {
-            if (Selection.transforms.Contains(child))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+   
 }

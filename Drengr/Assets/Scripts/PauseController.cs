@@ -56,13 +56,13 @@ public class PauseController : MonoBehaviour
 
     public void OnApplicationFocus(bool focus)
     {
-        if (focus)
+        //if (focus)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
         }
-        else
+        //else
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
         }
     }
 
